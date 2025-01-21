@@ -1,7 +1,6 @@
 package com.ontariotechu.sofe3980U;
 
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 /**
@@ -9,7 +8,7 @@ import org.junit.Test;
  */
 public class BinaryTest {
     /**
-     * Test The constructor with a valid binary vallue
+     * Test The constructor with a valid binary value
      */
     @Test
     public void normalConstructor() {
@@ -117,5 +116,101 @@ public class BinaryTest {
         Binary binary2 = new Binary("0");
         Binary binary3 = Binary.add(binary1, binary2);
         assertTrue(binary3.getValue().equals("0"));
+    }
+
+    @Test
+    public void orTest1() {
+        Binary binary1 = new Binary("1101");
+        Binary binary2 = new Binary("1011");
+        Binary result = Binary.or(binary1, binary2);
+        assertTrue(result.getValue().equals("1111")); // Updated expected result
+    }
+
+    /**
+     * Test the OR function where one number is shorter than the other.
+     */
+    @Test
+    public void orTest2() {
+        Binary binary1 = new Binary("110");
+        Binary binary2 = new Binary("10011");
+        Binary result = Binary.or(binary1, binary2);
+        assertTrue(result.getValue().equals("10111")); // Updated expected result
+    }
+
+    /**
+     * Test the OR function with a binary number and zero.
+     */
+    @Test
+    public void orTest3() {
+        Binary binary1 = new Binary("0");
+        Binary binary2 = new Binary("1010");
+        Binary result = Binary.or(binary1, binary2);
+        assertTrue(result.getValue().equals("1010")); // Updated expected result
+    }
+
+    /**
+     * Test the AND function with two binary numbers of the same length.
+     */
+    @Test
+    public void andTest1() {
+        Binary binary1 = new Binary("1110");
+        Binary binary2 = new Binary("1101");
+        Binary result = Binary.and(binary1, binary2);
+        assertTrue(result.getValue().equals("1100")); // Updated expected result
+    }
+
+    /**
+     * Test the AND function where one number is shorter than the other.
+     */
+    @Test
+    public void andTest2() {
+        Binary binary1 = new Binary("111");
+        Binary binary2 = new Binary("10001");
+        Binary result = Binary.and(binary1, binary2);
+        assertTrue(result.getValue().equals("1")); // Updated expected result
+    }
+
+    /**
+     * Test the AND function with a binary number and zero.
+     */
+    @Test
+    public void andTest3() {
+        Binary binary1 = new Binary("0");
+        Binary binary2 = new Binary("1111");
+        Binary result = Binary.and(binary1, binary2);
+        assertTrue(result.getValue().equals("0")); // Updated expected result
+    }
+
+    /**
+     * Test the Multiply function with two binary numbers.
+     */
+    @Test
+    public void multiplyTest1() {
+        Binary binary1 = new Binary("110");
+        Binary binary2 = new Binary("11");
+        Binary result = Binary.multiply(binary1, binary2);
+        assertTrue(result.getValue().equals("10010")); // Updated expected result
+    }
+
+    /**
+     * Test the Multiply function where one number is zero.
+     */
+    @Test
+    public void multiplyTest2() {
+        Binary binary1 = new Binary("110");
+        Binary binary2 = new Binary("0");
+        Binary result = Binary.multiply(binary1, binary2);
+        assertTrue(result.getValue().equals("0")); // Updated expected result
+    }
+
+    /**
+     * Test the Multiply function with two binary numbers of different lengths.
+     */
+    @Test
+    public void multiplyTest3() {
+        Binary binary1 = new Binary("1011");
+        Binary binary2 = new Binary("10");
+        Binary result = Binary.multiply(binary1, binary2);
+        assertTrue(result.getValue().equals("10110")); // Updated expected result
     }
 }

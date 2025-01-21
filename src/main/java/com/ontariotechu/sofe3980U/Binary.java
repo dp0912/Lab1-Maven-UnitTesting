@@ -68,29 +68,60 @@ public class Binary {
      * @return A binary variable with a value of <i>num1+num2</i>.
      */
     public static Binary add(Binary num1, Binary num2) {
-        // the index of the first digit of each number
         int ind1 = num1.number.length() - 1;
         int ind2 = num2.number.length() - 1;
-        // initial variable
         int carry = 0;
-        String num3 = ""; // the binary value of the sum
-        while (ind1 >= 0 || ind2 >= 0 || carry != 0) // loop until all digits are processed
-        {
-            int sum = carry; // previous carry
-            if (ind1 >= 0) { // if num1 has a digit to add
-                sum += (num1.number.charAt(ind1) == '1') ? 1 : 0; // convert the digit to int and add it to sum
-                ind1--; // update ind1
+        String num3 = "";
+        while (ind1 >= 0 || ind2 >= 0 || carry != 0) {
+            int sum = carry;
+            if (ind1 >= 0) {
+                sum += (num1.number.charAt(ind1) == '1') ? 1 : 0;
+                ind1--;
             }
-            if (ind2 >= 0) { // if num2 has a digit to add
-                sum += (num2.number.charAt(ind2) == '1') ? 1 : 0; // convert the digit to int and add it to sum
-                ind2--; // update ind2
+            if (ind2 >= 0) {
+                sum += (num2.number.charAt(ind2) == '1') ? 1 : 0;
+                ind2--;
             }
-            carry = sum / 2; // the new carry
-            sum = sum % 2; // the resultant digit
-            num3 = ((sum == 0) ? "0" : "1") + num3; // convert sum to string and append it to num3
+            carry = sum / 2;
+            sum = sum % 2;
+            num3 = ((sum == 0) ? "0" : "1") + num3;
         }
-        Binary result = new Binary(num3); // create a binary object with the calculated value.
-        return result;
+        return new Binary(num3);
+    }
 
+    // OR method
+    public static Binary or(Binary num1, Binary num2) {
+        int maxLen = Math.max(num1.number.length(), num2.number.length());
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < maxLen; i++) {
+            char bit1 = (i < num1.number.length()) ? num1.number.charAt(num1.number.length() - 1 - i) : '0';
+            char bit2 = (i < num2.number.length()) ? num2.number.charAt(num2.number.length() - 1 - i) : '0';
+            result.insert(0, (bit1 == '1' || bit2 == '1') ? '1' : '0');
+        }
+        return new Binary(result.toString());
+    }
+
+    // AND method
+    public static Binary and(Binary num1, Binary num2) {
+        int maxLen = Math.max(num1.number.length(), num2.number.length());
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < maxLen; i++) {
+            char bit1 = (i < num1.number.length()) ? num1.number.charAt(num1.number.length() - 1 - i) : '0';
+            char bit2 = (i < num2.number.length()) ? num2.number.charAt(num2.number.length() - 1 - i) : '0';
+            result.insert(0, (bit1 == '1' && bit2 == '1') ? '1' : '0');
+        }
+        return new Binary(result.toString());
+    }
+
+    // Multiply method
+    public static Binary multiply(Binary num1, Binary num2) {
+        Binary result = new Binary("0");
+        for (int i = num2.number.length() - 1; i >= 0; i--) {
+            if (num2.number.charAt(i) == '1') {
+                String shifted = num1.number + "0".repeat(num2.number.length() - 1 - i);
+                result = add(result, new Binary(shifted));
+            }
+        }
+        return result;
     }
 }
