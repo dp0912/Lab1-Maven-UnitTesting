@@ -20,14 +20,17 @@ A simple Java-based Binary Calculator developed using Apache Maven. The applicat
 
 ## Build
 To build the project, use the following command:
+
 mvn clean package
 
 
 ## Run
 After building the project, you can run the application using the following command:
+
 java -jar target/BinaryCalculator-1.0.0-jar-with-dependencies.jar
 
 
 ## Testing
 To verify the functionality of the application, run the following command:
+
 mvn test
