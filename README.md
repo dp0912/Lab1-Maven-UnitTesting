@@ -1,19 +1,36 @@
 # Binary Calculator
 
-A simple Java-based Binary Calculator built using Apache Maven. This application performs binary operations such as Addition, Multiplication, Bitwise AND, and Bitwise OR.
+A simple Java-based Binary Calculator developed using Apache Maven. The application performs essential binary operations such as **Addition**, **Multiplication**, **Bitwise AND**, and **Bitwise OR** with user-friendly input and output.
+
+---
 
 ## Features
 - Perform binary operations: **Addition**, **AND**, **OR**, and **Multiplication**.
-- Validates binary inputs to ensure correctness.
-- Built and managed using **Apache Maven**.
-- Includes comprehensive **JUnit tests** for all core methods.
+- Input validation to ensure only valid binary strings are processed.
+- Built and managed with **Apache Maven**.
+- Includes **JUnit tests** for verifying functionality.
+
+---
 
 ## Requirements
 - Java Development Kit (JDK) 8 or higher.
 - Apache Maven 3.9.9 or higher.
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/binary-calculator.git
-   cd binary-calculator
+---
+
+## Build
+To build the project, use the following command:
+```bash
+mvn clean package
+
+
+## Run
+After building the project, you can run the application using the following command:
+```bash
+java -jar target/BinaryCalculator-1.0.0-jar-with-dependencies.jar
+
+
+## Testing
+To verify the functionality of the application, run the following command:
+```bash
+mvn test
