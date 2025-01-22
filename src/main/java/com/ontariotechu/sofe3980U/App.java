@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Binary Calculator!");
+        System.out.println("\n-------------------  Welcome to the Binary Calculator!  -------------------\n");
 
         // Get the first binary number from the user
         System.out.print("Enter the first binary number: ");
@@ -21,7 +21,7 @@ public class App {
         Binary binary2 = new Binary(binary2Input);
 
         Binary sum = Binary.add(binary1, binary2);
-        System.out.println("Result of ADD: " + sum.getValue());
+        System.out.println("\nResult of ADD: " + sum.getValue());
 
         Binary andResult = Binary.and(binary1, binary2);
         System.out.println("Result of AND: " + andResult.getValue());
@@ -32,7 +32,7 @@ public class App {
         Binary multiplyResult = Binary.multiply(binary1, binary2);
         System.out.println("Result of MULTIPLY: " + multiplyResult.getValue());
 
-        System.out.println("Exiting the Binary Calculator!");
+        System.out.println("\n-------------------   Exiting the Binary Calculator!  ------------------- \n");
 
         scanner.close();
     }
